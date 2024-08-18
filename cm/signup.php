@@ -12,6 +12,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($stmt->execute()) {
         echo "Registration successful!";
+        header("Location: dashboard.php");
+            exit();
     } else {
         echo "Error: " . $stmt->error;
     }

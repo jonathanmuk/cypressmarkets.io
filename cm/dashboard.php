@@ -314,12 +314,42 @@ $conn->close();
         <div class="card" style="margin-bottom: 20px;">
             <div class="card-body">
                 <h5 class="card-title">Real-time Stock Prices</h5>
-                <div id="stock-ticker" class="d-flex justify-content-between">
-                    <div>AAPL: <span class="stock-price">$150.25</span></div>
-                    <div>GOOGL: <span class="stock-price">$2,750.50</span></div>
-                    <div>MSFT: <span class="stock-price">$305.75</span></div>
-                    <div>AMZN: <span class="stock-price">$3,400.00</span></div>
-                </div>
+                <!-- TradingView Widget BEGIN -->
+<div class="tradingview-widget-container">
+  <div class="tradingview-widget-container__widget"></div>
+  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+  {
+  "symbols": [
+    {
+      "proName": "FOREXCOM:SPXUSD",
+      "title": "S&P 500 Index"
+    },
+    {
+      "proName": "FOREXCOM:NSXUSD",
+      "title": "US 100 Cash CFD"
+    },
+    {
+      "proName": "FX_IDC:EURUSD",
+      "title": "EUR to USD"
+    },
+    {
+      "proName": "BITSTAMP:BTCUSD",
+      "title": "Bitcoin"
+    },
+    {
+      "proName": "BITSTAMP:ETHUSD",
+      "title": "Ethereum"
+    }
+  ],
+  "showSymbolLogo": true,
+  "isTransparent": true,
+  "displayMode": "adaptive",
+  "colorTheme": "light",
+  "locale": "en"
+}
+  </script>
+</div>
+<!-- TradingView Widget END -->
             </div>
         </div>
     </div>
@@ -367,26 +397,20 @@ $conn->close();
                     <div class="col-md-6 mb-4">
                         <div class="card">
                             <div class="card-body">
-                                <h5 class="card-title">Open Positions</h5>
-                                <table class="table">
-                                    <thead>
-                                        <tr>
-                                            <th>Symbol</th>
-                                            <th>Type</th>
-                                            <th>Amount</th>
-                                            <th>Profit/Loss</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>EUR/USD</td>
-                                            <td>Buy</td>
-                                            <td>1.00</td>
-                                            <td class="text-success">+$50.00</td>
-                                        </tr>
-                                        <!-- Add more rows as needed -->
-                                    </tbody>
-                                </table>
+                               <!-- TradingView Widget BEGIN -->
+<div class="tradingview-widget-container">
+  <div class="tradingview-widget-container__widget"></div>
+  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-single-quote.js" async>
+  {
+  "symbol": "FX:EURUSD",
+  "width": 400,
+  "isTransparent": true,
+  "colorTheme": "light",
+  "locale": "en"
+}
+  </script>
+</div>
+<!-- TradingView Widget END -->
                             </div>
                         </div>
                     </div>
@@ -410,12 +434,71 @@ $conn->close();
                     </div>
                 </div>
 <!-- Live Market Data -->
+<!-- Live Market Data -->
+<div class="row mt-4">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Live Market Data</h5>
+                <!-- TradingView Widget BEGIN -->
+                <div class="tradingview-widget-container">
+                    <div class="tradingview-widget-container__widget"></div>
+                    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>
+                    {
+                    "width": "100%",
+                    "height": "610",
+                    "symbol": "NASDAQ:AAPL",
+                    "interval": "D",
+                    "timezone": "Africa/Nairobi",
+                    "theme": "light",
+                    "style": "1",
+                    "locale": "en",
+                    "withdateranges": true,
+                    "hide_side_toolbar": false,
+                    "allow_symbol_change": true,
+                    "details": true,
+                    "hotlist": true,
+                    "calendar": false,
+                    "support_host": "https://www.tradingview.com"
+                    }
+                    </script>
+                </div>
+                <!-- TradingView Widget END -->
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Heatmap and Financial News -->
 <div class="row mt-4">
     <div class="col-md-8">
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title">Live Market Data</h5>
-                <canvas id="liveMarketChart"></canvas>
+                <h5 class="card-title">Market Heatmap</h5>
+                <!-- TradingView Widget BEGIN -->
+                <div class="tradingview-widget-container">
+                    <div class="tradingview-widget-container__widget"></div>
+                    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-stock-heatmap.js" async>
+                    {
+                    "exchanges": [],
+                    "dataSource": "SPX500",
+                    "grouping": "sector",
+                    "blockSize": "market_cap_basic",
+                    "blockColor": "change",
+                    "locale": "en",
+                    "symbolUrl": "",
+                    "colorTheme": "light",
+                    "hasTopBar": false,
+                    "isDataSetEnabled": false,
+                    "isZoomEnabled": true,
+                    "hasSymbolTooltip": true,
+                    "width": "100%",
+                    "height": "500"
+                    }
+                    </script>
+                </div>
+                <!-- TradingView Widget END -->
             </div>
         </div>
     </div>
@@ -423,15 +506,28 @@ $conn->close();
         <div class="card">
             <div class="card-body">
                 <h5 class="card-title">Financial News</h5>
-                <ul class="list-group" id="financial-news">
-                    <li class="list-group-item">Stock Market Reaches All-Time High</li>
-                    <li class="list-group-item">Fed Announces Interest Rate Decision</li>
-                    <li class="list-group-item">Tech Giants Report Quarterly Earnings</li>
-                </ul>
+                <!-- TradingView Widget BEGIN -->
+                <div class="tradingview-widget-container">
+                    <div class="tradingview-widget-container__widget"></div>
+                    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-timeline.js" async>
+                    {
+                    "feedMode": "all_symbols",
+                    "isTransparent": false,
+                    "displayMode": "regular",
+                    "width": "100%",
+                    "height": "500",
+                    "colorTheme": "light",
+                    "locale": "en"
+                    }
+                    </script>
+                </div>
+                <!-- TradingView Widget END -->
             </div>
         </div>
     </div>
 </div>
+
+
 </div>
 </div>
     <!-- Placeholder for loading content dynamically -->
